@@ -1,0 +1,64 @@
+<!doctype html<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postit</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+  </head>
+<body>
+    <header class="navbar navbar-fixed-top">
+      <nav class="navbar-inner">
+        <div class="container">
+            NAV goes here
+<%
+=begin
+%>
+          <%= render 'layouts/navigation' %>
+<%
+=end
+%>
+        </div>
+      </nav>
+    </header>
+    <div id="main" role="main">
+      <div class="container">
+        <div class="content">
+           <div class="row">
+            <div class="span12">
+                <% if Rails.env.development? %>
+                    <%= "DEBUG: #{controller.controller_name}::#{controller.action_name}" %>
+                <% end %>
+                <br/>
+                <% if logged_in? %>
+                    <%= "Welcome #{link_to current_user.name, user_path(current_user.id)}".html_safe %>
+                    (<%= link_to 'logout', logout_path %>)
+                <% else %>
+                    <%= link_to 'Log in', login_path %>
+                    or
+                    <%= link_to 'Register', register_path %>
+                <% end %>
+
+                <p id="notice"><%= notice %></p>
+                <h2>
+                    <%= link_to 'All', root_path %>
+                    <% Category.all.each do |category| %>
+                      - <%= link_to category.name, category_path(category.id) %>
+                    <% end %>
+                </h2>
+              <%= yield %>
+            </div>
+          </div>
+          <footer>
+          </footer>
+        </div>
+      </div> <!--! end of .container -->
+    </div> <!--! end of #main -->
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+        
+<table>
+    <tr>
+        <th>Votes</th>
+        <th></th>
+        <th>Title</th>
+        <th>Submitter</th>
+        <th>Comments</th>
+    </tr>
+    <% counter = 1 %>
+    <% posts.each do |post| %>
+        <tr>
+            <td>
+                <%= link_to '▲', post_votes_path(post, direction: 'up'), method: 'post', remote: true if logged_in? %>
+                <br/>
+                <span id="total_votes_<%= post.id %>">
+                    (<%= post.total_votes %>)
+                </span>
+                <br/>
+                <%= link_to '▼', post_votes_path(post, direction: 'down'), method: 'post', remote: true if logged_in? %>
+            </td>
+            <td><%= counter.to_s + '.' %></td>
+            <td><%= link_to(post.title, fix_url(post.url)) %></td>
+            <td><%=  display_name(post.user) %></td>
+            <td><%= link_to post.comments.size, post_comments_path(post) %></td>
+        </tr>
+        <% counter += 1 %>
+    <% end %>
+</table>
+

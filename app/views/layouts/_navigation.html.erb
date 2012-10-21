@@ -1,0 +1,38 @@
+<div class="navbar">
+    <div class="navbar-inner">
+      <div class="container" style="width: auto;">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <%= link_to "Postit", root_path, :class => 'brand' %>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li><%= link_to 'All', root_path %></li>
+              <% Category.all.each do |category| %>
+                <li><%= link_to category.name, category_path(category.id) %></li>
+              <% end %>
+          </ul>
+          <ul class="nav pull-right">
+            <li class="divider-vertical"></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=  logged_in? ? current_user.name : 'Sign in' %> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <% if logged_in? %>
+                  <li><a href="#"><%= link_to('Profile', user_path(current_user.id)) %></a></li>
+                  <li><a href="#"><%= link_to('Logout', logout_path) %></a></li>
+                <% else %>
+                  <li><a href="#"><%= link_to('Login', login_path)  %></a></li>
+                  <li><a href="#"><%= link_to('Sign up', register_path)  %></a></li>
+                <% end %>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div>
+    </div><!-- /navbar-inner -->
+  </div><!-- /navbar -->

@@ -1,0 +1,22 @@
+Comments Index!
+
+This post has <%= @post.comments.size %> comments!
+<p>
+<% @post.comments.each do |comment| %>
+    <%= comment.body %>
+    by: <%= display_name(comment.user) %>
+    <hr/>
+<% end %>
+</p>
+
+<% if logged_in? %>
+Add a comment:
+<p>
+    <%= form_for(Comment.new, url: post_comments_path(@post)) do |f| %>
+        <%= f.text_area :body %>
+        <br/>
+        <%= f.submit "Add a comment" %>
+    <% end %>
+</p>
+
+<% end %>
