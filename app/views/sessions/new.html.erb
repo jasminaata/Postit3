@@ -1,12 +1,22 @@
 <div class="span4">
-	<h1>Login here</h1>
-	<br/>
+	<div class="well">
+		<h1>Login here</h1><br/>
+		<%= form_tag 'login', method: 'post' do %>
+			<%= label_tag :name %>
+		    <%= text_field_tag 'name', nil, :id => "username" %>
+		    <%= label_tag :password %>
+		    <%= password_field_tag 'password', nil, :id => "password" %><br/>
+		    <%= submit_tag 'Login' %>
+		<% end %> 
+	</div>
 
-	<%= form_tag 'login', method: 'post' do %>
-	    <%= text_field_tag 'name', nil, :id => "username", :placeholder => 'username' %>
-	    <br/>
-	    <%= password_field_tag 'password', nil,  :placeholder => 'password' %> 
-	    <br/>
-	    <%= submit_tag 'Login' %>
-	<% end %> 
+	<div class="row">
+	  <div class="span4">
+	    <ul class="breadcrumb">
+	      <li>
+	      	<a href="#"><%= link_to 'Home', root_path %></a>
+	      </li>
+	    </ul>
+	  </div>
+	</div>
 </div>
