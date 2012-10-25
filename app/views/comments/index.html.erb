@@ -1,22 +1,25 @@
-Comments Index!
+<div class="span4">
+	<h2>Comments:</h2>
+</div>
 
-This post has <%= @post.comments.size %> comments!
-<p>
-<% @post.comments.each do |comment| %>
-    <%= comment.body %>
-    by: <%= display_name(comment.user) %>
-    <hr/>
-<% end %>
-</p>
+<div class="span4">
+	<div class="controls">
+		<% if logged_in? %>
+			<h2>Add a comment:</h2>
+			<%= form_for(Comment.new, url: post_comments_path(@post)) do |f| %>
+		        <%= f.text_area :body, :class => "input-xlarge", :id => "textarea", :rows => "3" %>
+		        <br/>
+		        <%= f.submit "Comment", :class => "btn btn-primary" %>
+			<% end %>
+		<% end %>
+	</div>
 
-<% if logged_in? %>
-Add a comment:
-<p>
-    <%= form_for(Comment.new, url: post_comments_path(@post)) do |f| %>
-        <%= f.text_area :body %>
-        <br/>
-        <%= f.submit "Add a comment" %>
-    <% end %>
-</p>
-
-<% end %>
+	<p>This post has <%= @post.comments.size %> comments.</p>
+	<div class="well">
+		<% @post.comments.each do |comment| %>
+	    	<p><%= display_name(comment.user) %></p>
+	    	<p><%= comment.body %></p>
+	    	<hr/>
+		<% end %>
+	</div>
+</div>
