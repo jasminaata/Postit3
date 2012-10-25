@@ -1,17 +1,17 @@
 <section id="forms">
-    <div class="span8 offset2">    
+    <div class="span10 offset1">    
         <form class="form-horizontal well">
             <div class="row">
-                <div class="span1 offset1">
+                <div class="span2" style="text-align:center">
                     <h2>Votes</h2>
                 </div>
-                <div class="span2">
+                <div class="span3">
                     <h2>Title</h2>
                 </div>
-                <div class="span2">
+                <div class="span2" >
                     <h2>Submitter</h2>
                 </div>
-                <div class="span1">
+                <div class="span1" style="text-align:center">
                     <h2>Comments</h2>
                 </div>
             </div> <!-- end of row -->
@@ -19,20 +19,20 @@
             <% counter = 1 %>
             <% posts.each do |post| %>
                 <div class="row">
-                    <div class="span1 offset1">    
+                    <div class="span2" style="text-align:center">    
                         <%= link_to '▲', post_votes_path(post, direction: 'up'), method: 'post', remote: true if logged_in? %><br/>
                         <span id="total_votes_<%= post.id %>">
                             (<%= post.total_votes %>)
                         </span><br/>
                         <%= link_to '▼', post_votes_path(post, direction: 'down'), method: 'post', remote: true if logged_in? %>
                     </div>
-                    <div class="span2">    
+                    <div class="span3">    
                         <%= counter.to_s + '. ' %><%= link_to(post.title, fix_url(post.url)) %>
                     </div>
                     <div class="span2">    
                         <%=  display_name(post.user) %>
                     </div>
-                    <div class="span1">    
+                    <div class="span1" style="text-align:center">    
                         <%= link_to post.comments.size, post_comments_path(post) %>
                     </div>
                 </div><!-- end of row -->
