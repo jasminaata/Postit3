@@ -15,15 +15,4 @@
 //= require bootstrap
 //= require_tree .
 
-// $(document).ready(function () {
-//     $input = $('input#username');
-//     $input.css('color', $input.val() === 'Name' ? '#aaa' : '#000');
-// })
-
-// function OnFocusInput (input) {
-// 	$('input#username').val(input);
-//     // this.clear();
-//     // input.style.color = '#000';
-//     // alert(input.css)
-// }
 
