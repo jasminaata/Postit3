@@ -1,3 +1,7 @@
-<h3><%= @category.name %></h3>
+<div class="span8 offset2">
+    <legend>
+        <h1><%= @category.name %></h1>
+    </legend>
+</div>
 
 <%= render 'shared/posts', posts: @category.posts %>

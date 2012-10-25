@@ -1,30 +1,46 @@
-        
-<table>
-    <tr>
-        <th>Votes</th>
-        <th></th>
-        <th>Title</th>
-        <th>Submitter</th>
-        <th>Comments</th>
-    </tr>
-    <% counter = 1 %>
-    <% posts.each do |post| %>
-        <tr>
-            <td>
-                <%= link_to '▲', post_votes_path(post, direction: 'up'), method: 'post', remote: true if logged_in? %>
-                <br/>
-                <span id="total_votes_<%= post.id %>">
-                    (<%= post.total_votes %>)
-                </span>
-                <br/>
-                <%= link_to '▼', post_votes_path(post, direction: 'down'), method: 'post', remote: true if logged_in? %>
-            </td>
-            <td><%= counter.to_s + '.' %></td>
-            <td><%= link_to(post.title, fix_url(post.url)) %></td>
-            <td><%=  display_name(post.user) %></td>
-            <td><%= link_to post.comments.size, post_comments_path(post) %></td>
-        </tr>
-        <% counter += 1 %>
-    <% end %>
-</table>
+<section id="forms">
+    <div class="span8 offset2">    
+        <form class="form-horizontal well">
+            <div class="row">
+                <div class="span1 offset1">
+                    <h2>Votes</h2>
+                </div>
+                <div class="span2">
+                    <h2>Title</h2>
+                </div>
+                <div class="span2">
+                    <h2>Submitter</h2>
+                </div>
+                <div class="span1">
+                    <h2>Comments</h2>
+                </div>
+            </div> <!-- end of row -->
+            <hr/>
+            <% counter = 1 %>
+            <% posts.each do |post| %>
+                <div class="row">
+                    <div class="span1 offset1">    
+                        <%= link_to '▲', post_votes_path(post, direction: 'up'), method: 'post', remote: true if logged_in? %><br/>
+                        <span id="total_votes_<%= post.id %>">
+                            (<%= post.total_votes %>)
+                        </span><br/>
+                        <%= link_to '▼', post_votes_path(post, direction: 'down'), method: 'post', remote: true if logged_in? %>
+                    </div>
+                    <div class="span2">    
+                        <%= counter.to_s + '. ' %><%= link_to(post.title, fix_url(post.url)) %>
+                    </div>
+                    <div class="span2">    
+                        <%=  display_name(post.user) %>
+                    </div>
+                    <div class="span1">    
+                        <%= link_to post.comments.size, post_comments_path(post) %>
+                    </div>
+                </div><!-- end of row -->
+            <% counter += 1 %>
+            <% end %>
+        </form>
+    </div>
+</section>
+
+
 
