@@ -14,6 +14,20 @@
   <%= @post.category.name %>
 </p>
 
+<div class="row">
+  <div class="span7 offset1">
+    <ul class="breadcrumb">
+      <li>
+      	<a href="#">
+      		<%= link_to 'Edit', edit_post_path(@post) %>
+      	</a>
+      	<span class="divider">/</span>
+      	<a href="#">
+      		<%= link_to 'Back to profile', user_path(@post.user) %>
+      	</a>
+      </li>
+    </ul>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back to profle', user_path(@post.user) %>
+
