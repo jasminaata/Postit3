@@ -1,21 +1,43 @@
-
-<p>
-  <b>Title:</b>
-  <%= @post.title %>
-</p>
-
-<p>
-  <b>Url:</b>
-  <%= link_to(@post.url, fix_url(@post.url))%>
-</p>
-
-<p>
-  <b>Category:</b>
-  <%= @post.category.name %>
-</p>
+<section id="forms">
+  <div class="row">
+    <div class="span5 offset1">
+      <fieldset>
+        <legend>
+          <h1>Post details</h1>
+        </legend>
+        <div class="form-horizontal well">
+          <div class="control-group">
+            <label class="control-label">Title</label>
+            <div class="controls">
+              <label class="checkbox">
+                <%= @post.title %>
+              </label>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Url</label>
+            <div class="controls">
+              <label class="checkbox">
+                <%= link_to(@post.url, fix_url(@post.url))%>
+              </label>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Category</label>
+            <div class="controls">
+              <label class="checkbox">
+                <%= @post.category.name %>
+              </label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</section>
 
 <div class="row">
-  <div class="span7 offset1">
+  <div class="span5 offset1">
     <ul class="breadcrumb">
       <li>
       	<a href="#">
