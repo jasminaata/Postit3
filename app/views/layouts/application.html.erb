@@ -23,11 +23,12 @@
 
 <p id="notice"><%= notice %></p>
 <%= yield %>
-<br/>
 
+<div class="span12">
 <% if Rails.env.development? %>
     <%= "DEBUG: #{controller.controller_name}::#{controller.action_name}" %>
 <% end %>
+</div>
 
 </body>
 </html>

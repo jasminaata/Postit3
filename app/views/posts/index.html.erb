@@ -1,5 +1,11 @@
-<%= link_to 'New Post', new_post_path if logged_in? %>
-<p/>
+<div class="span2 offset1">
+	<h1>All posts</h1><br>
+	<ul class="breadcrumb" style="text-align:center">
+	    <li>
+	    	<a href="#"><%= link_to 'New Post', new_post_path if logged_in? %></a>
+	    </li>
+	</ul>
+</div>
 
 <%= render 'shared/posts', posts: @posts %>
 
