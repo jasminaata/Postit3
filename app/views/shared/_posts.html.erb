@@ -20,11 +20,11 @@
             <% posts.each do |post| %>
                 <div class="row">
                     <div class="span2" style="text-align:center">    
-                        <%= link_to '+', post_votes_path(post, direction: 'up'), method: 'post', remote: true if logged_in? %>
+                        <%= link_to '▲', post_votes_path(post, direction: 'up'), method: 'post', remote: true if logged_in? %>
                         <span id="total_votes_<%= post.id %>">
                             (<%= post.total_votes %>)
                         </span>
-                        <%= link_to '-', post_votes_path(post, direction: 'down'), method: 'post', remote: true if logged_in? %><br/><br/>
+                        <%= link_to '▼', post_votes_path(post, direction: 'down'), method: 'post', remote: true if logged_in? %><br/><br/>
                     </div>
                     <div class="span3">    
                         <%= counter.to_s + '. ' %><%= link_to(post.title, fix_url(post.url)) %><br/><br/>
