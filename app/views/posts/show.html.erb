@@ -1,31 +1,31 @@
 <section id="forms">
   <div class="row">
-    <div class="span5 offset1">
+    <div class="span5 offset1" >
       <fieldset>
         <legend>
           <h1>Post details</h1>
         </legend>
         <div class="form-horizontal well">
           <div class="control-group">
-            <label class="control-label">Title</label>
+            <label class="control-label" style="font-size:medium">Title</label>
             <div class="controls">
-              <label class="checkbox" style="font-size:16">
+              <label class="checkbox" style="font-size:medium">
                 <%= @post.title %>
               </label>
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label">Url</label>
+            <label class="control-label" style="font-size:medium">Url</label>
             <div class="controls">
-              <label class="checkbox" style="font-size:16">
+              <label class="checkbox" style="font-size:medium">
                 <%= link_to(@post.url, fix_url(@post.url))%>
               </label>
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label">Category</label>
+            <label class="control-label" style="font-size:medium">Category</label>
             <div class="controls">
-              <label class="checkbox" style="font-size:16">
+              <label class="checkbox" style="font-size:medium">
                 <%= @post.category.name %>
               </label>
             </div>
@@ -36,7 +36,7 @@
   </div>
 </section>
 
-<div class="row">
+<div class="row" style="font-size:medium">
   <div class="span5 offset1">
     <ul class="breadcrumb">
       <li>

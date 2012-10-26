@@ -3,7 +3,7 @@
 		<h1>All posts</h1>
 	</legend>
 	<% if logged_in? %>
-		<ul class="breadcrumb" style="text-align:center">
+		<ul class="breadcrumb" style="text-align:center; font-size:medium">
 		    <li>
 		    	<a href="#"><%= link_to 'New Post', new_post_path if logged_in? %></a>
 		    </li>

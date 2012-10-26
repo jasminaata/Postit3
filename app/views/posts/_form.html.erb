@@ -1,7 +1,6 @@
 <section id="forms">
-
   <div class="row">
-    <div class="span7 offset1">
+    <div class="span7 offset1" >
         <fieldset>
           <legend>
             <h1>
@@ -23,28 +22,28 @@
             <% end %>
 
             <div class="control-group">
-              <label class="control-label" for="input01">Title</label>
+              <label class="control-label" for="input01" style="font-size:medium">Title</label>
               <div class="controls">
                 <%= f.text_field :title, :class => 'input-xlarge', :id=> 'input01' %>
               </div>
             </div>
 
             <div class="control-group">
-              <label class="control-label" for="input02">Url</label>
+              <label class="control-label" for="input02" style="font-size:medium">Url</label>
               <div class="controls">
                 <%= f.text_field :url, :class => 'input-xlarge', :id => 'input02' %>
               </div>
             </div>
 
               <div class="control-group">
-                <label class="control-label" for="select01">Category list</label>
+                <label class="control-label" for="select01" style="font-size:medium">Category list</label>
                 <div class="controls">
                   <%= f.select :category_id, Category.all.collect { |cat| [cat.name, cat.id] }  %>
                 </div>
               </div>
             
               <div class="form-actions">
-                <%= f.submit submittitle, :class => 'btn btn-primary' %> 
+                <%= f.submit submittitle, :class => 'btn btn-primary', :style => "font-size:medium" %> 
              </div>
           <% end %>
         </fieldset>

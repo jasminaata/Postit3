@@ -1,38 +1,38 @@
 <section id="forms">
     <div class="span10 offset1">    
         <form class="form-horizontal well">
-            <div class="row">
-                <div class="span2" style="text-align:center">
+            <div class="row" style="text-align:center">
+                <div class="span2">
                     <h2>Votes</h2>
                 </div>
                 <div class="span3">
                     <h2>Title</h2>
                 </div>
-                <div class="span2" >
+                <div class="span2" style="text-align:left">
                     <h2>Submitter</h2>
                 </div>
-                <div class="span1" style="text-align:center">
+                <div class="span1">
                     <h2>Comments</h2>
                 </div>
             </div> <!-- end of row -->
             <hr/>
             <% counter = 1 %>
             <% posts.each do |post| %>
-                <div class="row">
-                    <div class="span2" style="text-align:center">    
+                <div class="row" style="text-align:center; font-size:medium">
+                    <div class="span2">    
                         <%= link_to '▲', post_votes_path(post, direction: 'up'), method: 'post', remote: true if logged_in? %>
                         <span id="total_votes_<%= post.id %>">
                             (<%= post.total_votes %>)
                         </span>
                         <%= link_to '▼', post_votes_path(post, direction: 'down'), method: 'post', remote: true if logged_in? %><br/><br/>
                     </div>
-                    <div class="span3">    
+                    <div class="span3" style="text-align:left">    
                         <%= counter.to_s + '. ' %><%= link_to(post.title, fix_url(post.url)) %><br/><br/>
                     </div>
-                    <div class="span2">    
+                    <div class="span2" style="text-align:left">    
                         <%=  display_name(post.user) %><br/><br/>
                     </div>
-                    <div class="span1" style="text-align:center">    
+                    <div class="span1">    
                         <%= link_to post.comments.size, post_comments_path(post) %><br/><br/>
                     </div>
                 </div><!-- end of row -->

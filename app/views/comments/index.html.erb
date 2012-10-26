@@ -9,16 +9,16 @@
 			<%= form_for(Comment.new, url: post_comments_path(@post)) do |f| %>
 		        <%= f.text_area :body, :class => "input-xlarge", :id => "textarea", :rows => "3" %>
 		        <br/>
-		        <%= f.submit "Comment", :class => "btn btn-primary" %>
+		        <%= f.submit "Comment", :class => "btn btn-primary", :style => "font-size:medium" %>
 			<% end %>
 		<% end %>
 	</div>
 
-	<p>This post has <%= @post.comments.size %> comments.</p>
-	<div class="well">
+	<p style="font-size:medium">This post has <%= @post.comments.size %> comments.</p>
+	<div class="well" >
 		<% @post.comments.each do |comment| %>
-	    	<p><%= display_name(comment.user) %></p>
-	    	<p><%= comment.body %></p>
+	    	<p style="font-size:medium"><%= display_name(comment.user) %></p>
+	    	<p style="font-size:medium"><%= comment.body %></p>
 	    	<hr/>
 		<% end %>
 	</div>

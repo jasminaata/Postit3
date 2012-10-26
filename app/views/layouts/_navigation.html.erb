@@ -8,7 +8,7 @@
         </a>
         <%= link_to "Postit", root_path, :class => 'brand' %>
         <div class="nav-collapse">
-          <ul class="nav">
+          <ul class="nav" style="font-size:medium">
             <li><%= link_to 'All', root_path %></li>
               <% Category.all.each do |category| %>
                 <li><%= link_to category.name, category_path(category.id) %></li>
@@ -16,7 +16,7 @@
           </ul>
           <ul class="nav pull-right">
             <li class="divider-vertical"></li>
-            <li class="dropdown">
+            <li class="dropdown" style="font-size:medium">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=  logged_in? ? current_user.name : 'Sign in' %> <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <% if logged_in? %>
