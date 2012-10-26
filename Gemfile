@@ -18,6 +18,7 @@ group :assets do
   gem 'uglifier', '>= 1.2.4'
   gem 'bootstrap-sass', '~> 2.0.3.1'
   gem 'bootswatch-rails'
+  gem 'kaminari'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby

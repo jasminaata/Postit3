@@ -69,7 +69,7 @@
     <div class="span4 offset1">
         <h2><%= "#{@user.name}'s Votes "%></h2><hr/>
         <form class="form-horizontal well">
-            <% @user.votes.each do |vote| %>
+            <% @votes.each do |vote| %>
                 <% if vote.vote == false %>
                     <p style="font-size:medium">downvoted on:</p>
                 <% else %>
@@ -79,14 +79,7 @@
                     <%= link_to(display_title(vote.post), fix_url(vote.post.url)) %><hr/>
                 </p>
             <% end %>
-            <div class="pagination">
-                <ul>
-                    <!-- <li class="disabled"><a href="#"><-</a></li> -->
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <!-- <li class="disabled"><a href="#">-></a></li> -->
-                </ul>
-            </div>
+            <%= paginate @votes %>
         </form>
     </div>
 </section>

@@ -20,8 +20,14 @@
       </nav>
     </header>
 
+<% if notice %>
+<div class="span12">
+  <!-- <div class='alert alert-error'> -->
+    <p id="notice" class='alert alert-success' style="font-size:medium"><%= notice %></p>
+  <!-- </div> -->
+</div>
+<% end %>
 
-<p id="notice"><%= notice %></p>
 <%= yield %>
 
 <div class="span12">
