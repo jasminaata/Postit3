@@ -1,4 +1,3 @@
-
 <p>
   <b>Profile page for </b>
   <%= @user.name %>
@@ -6,37 +5,56 @@
 
 <h3><%= "#{@user.name}'s Posts"%></h3>
 
-<table>
-    <tr>
-        <th>Votes</th>
-        <th></th>
-        <th>Title</th>
-        <th>Posted</th>
-        <th>Comments</th>
-    </tr>
-    <% counter = 1 %>
-    <% @user.posts.each do |post| %>
-        <tr>
-            <td>
-                <%= link_to '▲', post_votes_path(post, direction: 'up'), method: 'post', remote: true if logged_in? %>
-                <br/>
-                <span id="total_votes_<%= post.id %>">
-                    (<%= post.total_votes %>)
-                </span>
-                <br/>
-                <%= link_to '▼', post_votes_path(post, direction: 'down'), method: 'post', remote: true if logged_in? %>
-            </td>
-            <td><%= counter.to_s + '.' %></td>
-            <td><%= link_to(post.title, fix_url(post.url)) %></td>
-            <td><%= post.created_at.strftime('%d/%m/%Y at %I:%M %p') %></td>
-            <td><%= link_to post.comments.size, post_comments_path(post) %></td>
-            <td><%= link_to 'Edit', edit_post_path(post)%></td>
-            <td> |  <%= link_to 'Show', post_path(post) %></td>
-            <td> |  <%= link_to 'Delete', post, method: :delete, confirm: "Are you sure?" %></td>
-        </tr>
-        <% counter += 1 %>
-    <% end %>
-</table>
+<section id="forms">
+    <div class="span11 offset1">    
+        <form class="form-horizontal well">
+            <div class="row">
+                <div class="span2" style="text-align:center">
+                    <h2>Votes</h2>
+                </div>
+                <div class="span3" style="text-align:center">
+                    <h2>Title</h2>
+                </div>
+                <div class="span2" style="text-align:center">
+                    <h2>Posted</h2>
+                </div>
+                <div class="span1" style="text-align:center">
+                    <h2>Comments</h2>
+                </div>
+            </div> <!-- end of row -->
+            <hr/>
+            <% counter = 1 %>
+            <% @user.posts.each do |post| %>
+                <div class="row">
+                    <div class="span2" style="text-align:center; font-size:medium">    
+                        <%= link_to '▲', post_votes_path(post, direction: 'up'), method: 'post', remote: true if logged_in? %>
+                        <span id="total_votes_<%= post.id %>">
+                            (<%= post.total_votes %>)
+                        </span>
+                        <%= link_to '▼', post_votes_path(post, direction: 'down'), method: 'post', remote: true if logged_in? %><br/><br/>
+                    </div>
+                    <div class="span3" style="font-size:medium">    
+                        <%= counter.to_s + '. ' %><%= link_to(post.title, fix_url(post.url)) %><br/><br/>
+                    </div>
+                    <div class="span2" style="text-align:center" >    
+                        <%= post.created_at.strftime('%d/%m/%Y at %I:%M %p') %><br/><br/>
+                    </div>
+                    <div class="span1" style="text-align:center; font-size:medium">    
+                        <%= link_to post.comments.size, post_comments_path(post) %><br/><br/>
+                    </div>
+                    <div class="span2" style="text-align:center; font-size:medium">    
+                        <%= link_to 'Edit', edit_post_path(post)%>
+                        | <%= link_to 'Show', post_path(post) %> | <%= link_to 'Delete', post, method: :delete, confirm: "Are you sure?" %>
+                    </div>
+                    
+                </div><!-- end of row -->
+            <% counter += 1 %>
+            <% end %>
+        </form>
+    </div>
+</section>
+
+<div class="span11">
 <hr/>
 
 <h3><%= "#{@user.name}'s Comments "%></h3>
@@ -58,6 +76,7 @@
     <br/>
 <% end %>
 
+    </div>
 
 
 
