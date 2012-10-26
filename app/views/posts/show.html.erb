@@ -9,7 +9,7 @@
           <div class="control-group">
             <label class="control-label">Title</label>
             <div class="controls">
-              <label class="checkbox">
+              <label class="checkbox" style="font-size:16">
                 <%= @post.title %>
               </label>
             </div>
@@ -17,7 +17,7 @@
           <div class="control-group">
             <label class="control-label">Url</label>
             <div class="controls">
-              <label class="checkbox">
+              <label class="checkbox" style="font-size:16">
                 <%= link_to(@post.url, fix_url(@post.url))%>
               </label>
             </div>
@@ -25,7 +25,7 @@
           <div class="control-group">
             <label class="control-label">Category</label>
             <div class="controls">
-              <label class="checkbox">
+              <label class="checkbox" style="font-size:16">
                 <%= @post.category.name %>
               </label>
             </div>
