@@ -1,82 +1,84 @@
-<p>
-  <b>Profile page for </b>
-  <%= @user.name %>
-</p>
+<div class="span11 offset1"> 
+    <h1>Profile page for <%= @user.name %></h1><hr/>
+</div>
 
-<h3><%= "#{@user.name}'s Posts"%></h3>
+<div class="span11 offset1">  
+    <h2><%= "#{@user.name}'s Posts"%></h2> <hr/> 
+    <form class="form-horizontal well">
+        <div class="row" style="text-align:center">
+            <div class="span2">
+                <h2>Votes</h2>
+            </div>
+            <div class="span3">
+                <h2>Title</h2>
+            </div>
+            <div class="span2">
+                <h2>Posted</h2>
+            </div>
+            <div class="span1">
+                <h2>Comments</h2>
+            </div>
+        </div> <!-- end of row -->
+        <hr/>
+        <% counter = 1 %>
+        <% @user.posts.each do |post| %>
+            <div class="row" style="text-align:center; font-size:medium">
+                <div class="span2">    
+                    <%= link_to '▲', post_votes_path(post, direction: 'up'), method: 'post', remote: true if logged_in? %>
+                    <span id="total_votes_<%= post.id %>">
+                        (<%= post.total_votes %>)
+                    </span>
+                    <%= link_to '▼', post_votes_path(post, direction: 'down'), method: 'post', remote: true if logged_in? %><br/><br/>
+                </div>
+                <div class="span3"style="text-align:left" >    
+                    <%= counter.to_s + '. ' %><%= link_to(post.title, fix_url(post.url)) %><br/><br/>
+                </div>
+                <div class="span2" style="font-size:small" >    
+                    <%= post.created_at.strftime('%d/%m/%Y at %I:%M %p') %><br/><br/>
+                </div>
+                <div class="span1">    
+                    <%= link_to post.comments.size, post_comments_path(post) %><br/><br/>
+                </div>
+                <div class="span2">    
+                    <%= link_to 'Edit', edit_post_path(post)%>
+                    | <%= link_to 'Show', post_path(post) %> | <%= link_to 'Delete', post, method: :delete, confirm: "Are you sure?" %>
+                </div>
+                
+            </div><!-- end of row -->
+        <% counter += 1 %>
+        <% end %>
+    </form>
+</div>
 
-<section id="forms">
-    <div class="span11 offset1">    
-        <form class="form-horizontal well">
-            <div class="row" style="text-align:center">
-                <div class="span2">
-                    <h2>Votes</h2>
-                </div>
-                <div class="span3">
-                    <h2>Title</h2>
-                </div>
-                <div class="span2">
-                    <h2>Posted</h2>
-                </div>
-                <div class="span1">
-                    <h2>Comments</h2>
-                </div>
-            </div> <!-- end of row -->
-            <hr/>
-            <% counter = 1 %>
-            <% @user.posts.each do |post| %>
-                <div class="row" style="text-align:center; font-size:medium">
-                    <div class="span2">    
-                        <%= link_to '▲', post_votes_path(post, direction: 'up'), method: 'post', remote: true if logged_in? %>
-                        <span id="total_votes_<%= post.id %>">
-                            (<%= post.total_votes %>)
-                        </span>
-                        <%= link_to '▼', post_votes_path(post, direction: 'down'), method: 'post', remote: true if logged_in? %><br/><br/>
-                    </div>
-                    <div class="span3"style="text-align:left" >    
-                        <%= counter.to_s + '. ' %><%= link_to(post.title, fix_url(post.url)) %><br/><br/>
-                    </div>
-                    <div class="span2" style="font-size:small" >    
-                        <%= post.created_at.strftime('%d/%m/%Y at %I:%M %p') %><br/><br/>
-                    </div>
-                    <div class="span1">    
-                        <%= link_to post.comments.size, post_comments_path(post) %><br/><br/>
-                    </div>
-                    <div class="span2">    
-                        <%= link_to 'Edit', edit_post_path(post)%>
-                        | <%= link_to 'Show', post_path(post) %> | <%= link_to 'Delete', post, method: :delete, confirm: "Are you sure?" %>
-                    </div>
-                    
-                </div><!-- end of row -->
-            <% counter += 1 %>
+
+<div class="span4 offset1">
+    <h2><%= "#{@user.name}'s Comments "%></h2><hr/>
+    <form class="form-horizontal well">
+        <% @user.comments.each do |comment| %>
+            <p style="font-size:medium"><%= comment.body %></p>
+            <p style="font-size:medium">
+                commented on:<%= link_to(display_title(comment.post), fix_url(comment.post.url)) %><hr/>
+            </p>
+        <% end %>
+    </form>
+</div>
+
+<div class="span4 offset1">
+    <h2><%= "#{@user.name}'s Votes "%></h2><hr/>
+    <form class="form-horizontal well">
+        <% @user.votes.each do |vote| %>
+            <% if vote.vote == false %>
+                <p style="font-size:medium">downvoted on:</p>
+            <% else %>
+                <p style="font-size:medium">upvoted on:</p>
             <% end %>
-        </form>
-    </div>
-</section>
+            <p style="font-size:medium">
+                <%= link_to(display_title(vote.post), fix_url(vote.post.url)) %><hr/>
+            </p>
+        <% end %>
+    </form>
+</div>
 
-<div class="span11">
-<hr/>
-
-<h3><%= "#{@user.name}'s Comments "%></h3>
-<% @user.comments.each do |comment| %>
-    <%= comment.body %>
-    commented on: 
-    <%= link_to(display_title(comment.post), fix_url(comment.post.url)) %>
-    <hr/>
-<% end %>
-
-<h3><%= "#{@user.name}'s Votes "%></h3>
-<% @user.votes.each do |vote| %>
-    <% if vote.vote == false %>
-        downvoted on: 
-    <% else %>
-        upvoted on:
-    <% end %>
-    <%= link_to(display_title(vote.post), fix_url(vote.post.url)) %>
-    <br/>
-<% end %>
-
-    </div>
 
 
 
