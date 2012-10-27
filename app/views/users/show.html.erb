@@ -22,7 +22,7 @@
             </div> <!-- end of row -->
             <hr/>
             <% counter = 1 %>
-            <% @user.posts.each do |post| %>
+            <% @posts.each do |post| %>
                 <div class="row" style="text-align:center; font-size:medium">
                     <div class="span2">    
                         <%= link_to '▲', post_votes_path(post, direction: 'up'), method: 'post', remote: true if logged_in? %>
@@ -43,11 +43,11 @@
                     <div class="span2">    
                         <%= link_to 'Edit', edit_post_path(post)%>
                         | <%= link_to 'Show', post_path(post) %> | <%= link_to 'Delete', post, method: :delete, confirm: "Are you sure?" %>
-                    </div>
-                    
+                    </div>                    
                 </div><!-- end of row -->
             <% counter += 1 %>
             <% end %>
+            <%= paginate @posts %>
         </form>
     </div>
 </section>
@@ -57,12 +57,13 @@
     <div class="span4 offset1">
         <h2><%= "#{@user.name}'s Comments "%></h2><hr/>
         <form class="form-horizontal well">
-            <% @user.comments.each do |comment| %>
+            <% @comments.each do |comment| %>
                 <p style="font-size:medium"><%= comment.body %></p>
                 <p style="font-size:medium">
                     commented on:<%= link_to(display_title(comment.post), fix_url(comment.post.url)) %><hr/>
                 </p>
             <% end %>
+            <%= paginate @comments %>
         </form>
     </div>
 

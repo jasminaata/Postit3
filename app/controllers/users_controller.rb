@@ -6,10 +6,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @votes = @user.votes.page(params[:page]).per(5)
+    @comments = @user.comments.page(params[:page]).per(5)
+    @posts = @user.posts.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @user, votes: @votes }
+      format.json { render json: @user, votes: @votes, comments: @comments, posts: @posts }
     end
   end
 
