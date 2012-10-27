@@ -53,7 +53,7 @@
                 </div><!-- end of row -->
             <% counter += 1 %>
             <% end %>
-            <%= paginate @posts %>
+            <%= paginate @posts, :param_name => 'posts_page' %>
         </form>
     </div>
 </section>
@@ -69,7 +69,7 @@
                     commented on:<%= link_to(display_title(comment.post), fix_url(comment.post.url)) %><hr/>
                 </p>
             <% end %>
-            <%= paginate @comments %>
+            <%= paginate @comments, :param_name => 'comments_page' %>
         </form>
     </div>
 
@@ -86,7 +86,7 @@
                     <%= link_to(display_title(vote.post), fix_url(vote.post.url)) %><hr/>
                 </p>
             <% end %>
-            <%= paginate @votes %>
+            <%= paginate @votes, :param_name => 'votes_page' %>
         </form>
     </div>
 </section>
