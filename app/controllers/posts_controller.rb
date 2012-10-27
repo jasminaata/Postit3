@@ -5,10 +5,11 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    @postspag = Post.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @posts }
+      format.json { render json: @posts, posts: @postpag }
     end
   end
 
