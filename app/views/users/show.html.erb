@@ -1,14 +1,8 @@
-<div class="span3 offset1"> 
+<div class="span4 offset1"> 
     <h1>Profile page for <%= @user.name %></h1><hr/>
 </div>
 
-<!-- <div class="span11"> 
-</div> -->
-
 <section id="posts">
-    <!-- <div class="span2 offset1"> -->
-        <!-- <h2><%= "#{@user.name}'s Posts"%></h2> <hr/> -->
-    <!-- </div> -->
     <div class="span11 offset1"> 
         <h2><%= "#{@user.name}'s Posts"%></h2> <hr/>   
         <form class="form-horizontal well">
@@ -53,7 +47,7 @@
                 </div><!-- end of row -->
             <% counter += 1 %>
             <% end %>
-            <%= paginate @posts, :param_name => 'posts_page' %>
+            <%= paginate @posts, param_name: 'posts_page' %>
         </form>
     </div>
 </section>
@@ -69,7 +63,7 @@
                     commented on:<%= link_to(display_title(comment.post), fix_url(comment.post.url)) %><hr/>
                 </p>
             <% end %>
-            <%= paginate @comments, :param_name => 'comments_page' %>
+            <%= paginate @comments, param_name: 'comments_page' %>
         </form>
     </div>
 
@@ -86,7 +80,7 @@
                     <%= link_to(display_title(vote.post), fix_url(vote.post.url)) %><hr/>
                 </p>
             <% end %>
-            <%= paginate @votes, :param_name => 'votes_page' %>
+            <%= paginate @votes, param_name: 'votes_page' %>
         </form>
     </div>
 </section>
