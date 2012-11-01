@@ -1,10 +1,13 @@
 class AddTabsToCategories < ActiveRecord::Migration
-  def change
-    add_column :categories, :index, :news
-    add_column :categories, :index, :programming
-    add_column :categories, :index, :sports
-    add_column :categories, :index, :music
-    add_column :categories, :index, :cooking
-    add_column :categories, :index, :politics
+  def self.up
+  	Category.create(name: 'News')
+  	Category.create(name: 'Programming')
+  	Category.create(name: 'Sports')
+	Category.create(name: 'Music')
+	Category.create(name: 'Cooking')
+  	Category.create(name: 'Politics')
+  end
+  def self.down
+  	Category.delete_all
   end
 end
