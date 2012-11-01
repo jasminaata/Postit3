@@ -7,8 +7,9 @@ gem 'rails', '3.2.8'
 
 #gem 'sqlite3'
 # use postgres instead of sqlite
-gem 'pg'
+gem 'pg', '~>0.13.2'
 gem 'sorcery'
+gem 'kaminari'
 
 
 # Gems used only for assets and not required
@@ -20,7 +21,7 @@ group :assets do
   gem 'uglifier', '>= 1.2.4'
   gem 'bootstrap-sass', '~> 2.0.3.1'
   gem 'bootswatch-rails'
-  gem 'kaminari'
+  
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby

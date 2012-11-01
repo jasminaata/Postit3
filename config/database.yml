@@ -19,7 +19,8 @@ development:
 #   pool: 5
 #   timeout: 5000
 
-test: &TEST
+# test: &TEST
+test:
   adapter: postgresql
   encoding: utf8
   database: project_test
