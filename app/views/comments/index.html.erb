@@ -11,6 +11,10 @@
 		        <br/>
 		        <%= f.submit "Comment", :class => "btn btn-primary", :style => "font-size:medium" %>
 			<% end %>
+		<% else %>
+			<p id="notice" class='alert alert-warning' style="font-size:medium">
+				<%= "You must be logged in in order to post comments." %>
+			</p>
 		<% end %>
 	</div>
 
