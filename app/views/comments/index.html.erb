@@ -18,7 +18,7 @@
 		<% end %>
 	</div>
 
-	<p style="font-size:medium">This post has <%= @post.comments.size %> comments.</p>
+	<p style="font-size:medium">This post has <%= pluralize(@post.comments.size, 'comment') %>.</p>
 	<div class="well" >
 		<% @post.comments.each do |comment| %>
 	    	<p style="font-size:medium"><%= display_name(comment.user) %></p>
