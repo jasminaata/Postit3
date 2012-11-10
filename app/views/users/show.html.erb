@@ -60,7 +60,7 @@
             <% @comments.each do |comment| %>
                 <p style="font-size:medium"><%= comment.body %></p>
                 <p style="font-size:medium">
-                    commented on:<%= link_to(display_title(comment.post), fix_url(comment.post.url)) %><hr/>
+                    commented on: <%= link_to(display_title(comment.post), fix_url(comment.post.url)) %><hr/>
                 </p>
             <% end %>
             <%= paginate @comments, param_name: 'comments_page' %>

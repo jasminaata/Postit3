@@ -17,7 +17,11 @@
   </div>
   <div class="field">
     <%= f.label :password %>
-    <%= f.password_field :password, :placeholder => 'Choose a password' %>
+    <%= f.password_field :password, :placeholder => 'Create a password' %>
+  </div>
+  <div class="field">
+    <%= f.label 'Password confirmation' %>
+    <%= f.password_field :password_confirmation, :placeholder => 'Re-enter password' %>
   </div>
   <br/>
   <div class="actions">
