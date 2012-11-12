@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     @votes = @user.votes.page(params[:votes_page]).per(5)
     @comments = @user.comments.page(params[:comments_page]).per(5)
     @posts = @user.posts.page(params[:posts_page]).per(10)

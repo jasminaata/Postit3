@@ -5,6 +5,7 @@ Postit::Application.routes.draw do
   get 'logout', to: 'sessions#destroy'
   post 'login', to: 'sessions#create'
   get 'register', to: 'users#new', as: 'register'
+  get 'profile', to: 'users#show'
 
   resources :posts do
     resources :votes, only: [:create]  
